@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+</head>
+<body>
+
+
+
+<div  class="p-3 mb-2 bg-dark text-white" >
+<div align="center" class="p-3 mb-2 bg-danger text-white"><h2>Result Management System</h2>
+	<div align="right">
+		<form action="/logout">
+		 <button type="submit" class="btn btn-success">Logout</button>
+	 </form>
+	 </div>
+</div>
+<div align="right" class="p-1">
+	<form action="/add">
+		
+	
+	<button type="submit" class="btn btn-info">Add Record</button>
+	
+	</form>
+	</div>
+	<table border="5px" style="width:1000px" height="300">
+		<thead align="center">
+			<tr>
+				
+				<th>Roll No</th>
+				<th>Name</th>
+				<th>Date of Birth</th>
+				<th>Score</th>
+				<th colspan="2">Action</th>
+			</tr>	
+		</thead>
+		
+        <% if (datalength > 0) { 
+
+            datavalues.forEach(result => { %>
+		<tbody>
+		<tr>
+		<td align="center"><%=result.rollno %> </td>
+		<td align="center"> <%=result.name%></td>
+		<td align="center"><%=result.dateofbirth%></td>
+		<td align="center"><%=result.score%></td>
+        <td align="center">
+            <div class="p-1">
+            <form action="/edit" method="post">
+                <input type="hidden" name="rollno" value="<%=result.rollno %>">
+            
+            <button type="submit" class="btn btn-info">Edit</button>
+            
+            </form>
+            </div>
+            </td>
+		
+		<td align="center">
+            <div class="p-1">
+            <form action="/delete/<%=result.rollno %>" method="post" >
+			   <input type="hidden" name="rollno" value="<%=result.rollno %>">
+            
+            <button type="submit"
+            class="btn btn-outline-danger btn-sm">Delete</button>
+            
+            </form>
+            </div>
+            </td>
+		
+		</tr>
+		</tbody>
+		 <% }) 
+    }%>  
+		 
+</table>
+</div>
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<footer>
+<div class="p-3 mb-2 bg-info text-white"></div>
+</footer>
+</body>
+</html>
+ 
